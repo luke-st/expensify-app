@@ -109,13 +109,14 @@ test('should fetch the expenses from firebase', (done) => {
 
 test('should remove expenses from firebase and store', (done) => {
     const store = createMockStore({})
-    store.dispatch(startRemoveExpense({ id: 3 })).then(() => {
-        database.ref('expenses/3').once('value').then((snapshot) => {
+    const id = expenses[2].id
+    store.dispatch(startRemoveExpense({ id })).then(() => {
+        database.ref(`expenses/${id}`).once('value').then((snapshot) => {
             expect(snapshot.val()).toEqual(null)
             const actions = store.getActions()
             expect(actions[0]).toEqual({
                 type: 'REMOVE_EXPENSE',
-                id: 3
+                id
             })
             done()
         })
