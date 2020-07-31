@@ -1,6 +1,4 @@
-import { v4 as uuidv4 } from 'uuid'
 import database from '../firebase/firebase'
-import expenses from '../tests/fixtures/expenses'
 
 // ADD_EXPENSE
 export const addExpense = (expense) => ({
@@ -32,6 +30,15 @@ export const removeExpense = ({ id } = {}) => ({
     id
 })
 
+export const startRemoveExpense = ({ id } = {}) => {
+    return (dispatch) => {
+        if (typeof id !== 'object') {
+            return database.ref(`expenses/${id}`).remove().then(() => {
+                dispatch(removeExpense({id}))
+            })
+        }
+    }
+}
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
