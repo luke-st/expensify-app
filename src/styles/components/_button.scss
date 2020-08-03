@@ -16,3 +16,7 @@
 .button--secondary {
     background: #888888;
 }
+
+.button--delete {
+    background: darken($color: red, $amount: 25%);
+}

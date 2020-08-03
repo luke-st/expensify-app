@@ -1,5 +1,5 @@
 import React from 'react'
-import selectExpenses from '../selectors/expenses'
+import selectExpenses, { getAllExpenses } from '../selectors/expenses'
 import selectExpensesTotal from '../selectors/expenses-total'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -12,6 +12,7 @@ export const ExpensesSummary = (props) => (
                     'expense' 
                     : 
                     'expenses'} totalling <span>{props.expensesTotal}</span></h1>
+            {props.hiddenExpenses > 0 ? (<p className='page-header__subtitle'>There {props.hiddenExpenses > 1 ? 'are' : 'is'} <span>{props.hiddenExpenses}</span> expense{props.hiddenExpenses > 1 ? 's' : ''} hidden.</p>) : null}
             <div className='page-header__actions'>
             <Link className='button' to="/create">Add Expense</Link>
             </div>
@@ -23,7 +24,8 @@ const mapStateToProps = (state) => {
     const visibleExpenses = selectExpenses(state.expenses, state.filters)
     return {
         expenseCount: visibleExpenses.length,
-        expensesTotal: numeral(selectExpensesTotal(visibleExpenses) / 100).format('$0,0.00')
+        expensesTotal: numeral(selectExpensesTotal(visibleExpenses) / 100).format('$0,0.00'),
+        hiddenExpenses: getAllExpenses(state.expenses, visibleExpenses)
     }
 }
 

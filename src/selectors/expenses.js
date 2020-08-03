@@ -18,4 +18,8 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
     })
 }
 
+export const getAllExpenses = (expenses, visibleExpenses) => {
+    return expenses.length - visibleExpenses.length
+}
+
 export default getVisibleExpenses
