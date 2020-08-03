@@ -64,8 +64,8 @@ class EmailModal extends React.Component {
                     <form className="form modal-input"
                         onSubmit={this.onEmailSubmit}
                     >
-                        <input className='text-input' type='email' id='email' placeholder='you@example.com' autoComplete='true' />
-                        <input className='text-input' type='password' id='password' placeholder='Password' minLength='6' autoComplete='true' />
+                        <input className='text-input' type='email' id='email' placeholder='you@example.com' autoComplete='true' required='true' />
+                        <input className='text-input' type='password' id='password' placeholder='Password' minLength='6' autoComplete='true' required='true' />
                         <button className='button'>Submit</button>
                     </form>
                 </div>
