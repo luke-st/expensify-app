@@ -1,4 +1,6 @@
-import * as firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/database'
 
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
@@ -16,69 +18,3 @@ const database = firebase.database()
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
 
 export { firebase, googleAuthProvider, database as default }
-
-// // child_removed
-// database.ref('expenses').on('child_removed', (snapshot) => {
-//     console.log(snapshot.key, snapshot.val())
-// })
-
-// // child_changed
-// database.ref('expenses').on('child_changed', (snapshot) => {
-//     console.log(snapshot.key, snapshot.val())
-// })
-
-// // child_added
-// database.ref('expenses').on('child_added', (snapshot) => {
-//     console.log(snapshot.key, snapshot.val())
-// })
-
-// // database.ref('expenses').once('value')
-// //   .then((snapshot) => {
-// //       const expenses = []
-
-// //       snapshot.forEach((childSnapshot) => {
-// //         expenses.push({
-// //             id: childSnapshot.key,
-// //             ...childSnapshot.val()
-// //         })
-// //       })
-// //     console.log(expenses)
-// //     }
-// // )
-
-// // database.ref('expenses').on('value', (snapshot) => {
-// //     const expenses = []
-
-// //     snapshot.forEach((expense) => {
-// //         expenses.push({
-// //             id: expense.key,
-// //             ...expense.val()
-// //         })
-// //     })
-// //     console.log(expenses)
-// // })
-
-// // const expenses = [{
-// //     description: 'Item One',
-// //     note: 'This is the first item',
-// //     amount: 4500,
-// //     createdAt: 0
-// // }, {
-// //     description: 'Item Two',
-// //     note: 'This is the second item',
-// //     amount: 8000,
-// //     createdAt: 0
-// // }, {
-// //     description: 'Item Three',
-// //     note: 'This is the third item',
-// //     amount: 10500,
-// //     createdAt: 0
-// // }]
-
-// // expenses.forEach((expense) => {
-// //     database.ref('expenses').push(expense).then((key) => {
-// //         console.log('Post successful, key is:', key.path.pieces_[1])
-// //     }).catch((e) => {
-// //         console.log('Something went wrong', e)
-// //     })
-// // })
