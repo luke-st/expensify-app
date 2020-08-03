@@ -1,25 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render LoginPage correctly 1`] = `
-<div
-  className="box-layout"
->
+<div>
   <div
-    className="box-layout__box"
+    className="box-layout"
   >
-    <h1
-      className="box-layout__title"
+    <div
+      className="box-layout__box"
     >
-      Expensify
-    </h1>
-    <p>
-      It's time to get your expenses under control.
-    </p>
-    <button
-      className="button"
-    >
-      Login with Google
-    </button>
+      <h1
+        className="box-layout__title"
+      >
+        Expensify
+      </h1>
+      <p>
+        It's time to get your expenses under control.
+      </p>
+      <div
+        className="form"
+      >
+        <button
+          className="button"
+          id="googleButton"
+        >
+          Login with Google
+        </button>
+        <button
+          className="button"
+          onClick={[Function]}
+        >
+          Login/Create Account with Email
+        </button>
+      </div>
+    </div>
   </div>
+  <EmailModal
+    handleClearEmailPrompt={[Function]}
+  />
 </div>
 `;

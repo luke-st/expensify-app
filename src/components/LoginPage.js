@@ -21,7 +21,7 @@ export class LoginPage extends React.Component {
                         <h1 className="box-layout__title">Expensify</h1>
                         <p>It's time to get your expenses under control.</p>
                         <div className='form'>
-                        <button className="button" onClick={this.props.startLogin}>Login with Google</button>
+                        <button className="button" id='googleButton' onClick={this.props.startLogin}>Login with Google</button>
                         <button className="button" onClick={this.handleEmailPrompt}>Login/Create Account with Email</button>
                         </div>
                     </div>
