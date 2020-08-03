@@ -7,12 +7,11 @@ class EmailModal extends React.Component {
         mode: 'LOGIN',
         error: ''
     }
-    toConsole = (e) => {
+    onEmailSubmit = (e) => {
         e.preventDefault()
         if (this.state.mode === 'LOGIN') {
             const email = e.target.email.value
             const password = e.target.password.value
-            // console.log(email, password)
             startLoginEmail(email, password)
             .catch((e) => {
                 if (e.code === 'auth/user-not-found') {
@@ -51,11 +50,11 @@ class EmailModal extends React.Component {
                 className='modal'
                 appElement={app}
             >
-                <h3 className='modal__title'>Please enter your email and chosen password.</h3>
+                <h3 className='modal__title'>Choose login or create an account, then enter your details below.</h3>
                 {this.state.error && <p className='form__error'>{this.state.error}</p>}
                 <div>
                     <div className="input-group modal-input">
-                    <select className="button"
+                    <select className="select"
                         onChange={this.onModeChange}
                     >
                         <option value="LOGIN">Login</option>
@@ -63,12 +62,11 @@ class EmailModal extends React.Component {
                     </select>
                     </div>
                     <form className="form modal-input"
-                        // onSubmit={props.startLoginEmail(this.state.mode, {})}
-                        onSubmit={this.toConsole}
+                        onSubmit={this.onEmailSubmit}
                     >
-                        <input type='email' id='email' placeholder='you@example.com' autoComplete='true' />
-                        <input type='password' id='password' placeholder='Password' minLength='6' autoComplete='true' />
-                        <button>Submit</button>
+                        <input className='text-input' type='email' id='email' placeholder='you@example.com' autoComplete='true' />
+                        <input className='text-input' type='password' id='password' placeholder='Password' minLength='6' autoComplete='true' />
+                        <button className='button'>Submit</button>
                     </form>
                 </div>
             </Modal>
