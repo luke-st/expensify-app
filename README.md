@@ -13,3 +13,4 @@ A simple expenses manager.
 - Jest Testing
 - Form Validation
 - Database Storage
+- dotenv
